@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="splash.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00bcd4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet JS y CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <!-- Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <style>
+    .modal {
+        position: fixed;
+        z-index: 2000;
+        left: 0; top: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.3);
+        display: flex; align-items: center; justify-content: center;
+    }
+    .modal-content {
+        background: #fff;
+        padding: 2rem 2.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 16px rgba(127, 25, 210, 0.15);
+        min-width: 320px;
+        position: relative;
+    }
+    .modal-content .close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    .modal-content form input {
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: 1px solid #bbbbbb;
+    }
+    .modal-content button {
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .modal-content button:hover {
+        background: #1565c0;
+    }
+    </style>
+</head>
+<body>
+        <div class="splash-screen" id="splash">
+            <div class="splash-logo">
+                <img src="CuidaTec (1) (2).png" alt="Logo CuidaTec" style="width:100%;height:100%;object-fit:contain;">
+            </div>
+            <div class="splash-title">CuidaTec</div>
+        </div>
+    <header>
+    <img src="CuidaTec (1) (2).png" width="250" height="200">
+    <button id="btn-login" style="float:right;margin-top:-10px;">Iniciar Sesión</button>
+    <button id="btn-logout" style="float:right;margin-top:-10px; display:none; margin-right:10px;">Cerrar Sesión</button>
+    </header>
+    <div id="modal-login" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="close-login">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="form-login">
+                <label>Correo electrónico:<br>
+                    <input type="email" id="login-email" required>
+                </label><br>
+                <label>Contraseña:<br>
+                    <input type="password" id="login-password" required>
+                </label><br>
+                <button type="submit">Entrar</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="link-to-register">Regístrate aquí</a></p>
+        </div>
+    </div>
+    <div id="modal-register" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="close-register">&times;</span>
+            <h2>Registro de Usuario</h2>
+            <form id="form-register">
+                <label>Nombre completo:<br>
+                    <input type="text" id="register-name" required>
+                </label><br>
+                <label>Correo electrónico:<br>
+                    <input type="email" id="register-email" required>
+                </label><br>
+                <label>Contraseña:<br>
+                    <input type="password" id="register-password" required>
+                </label><br>
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="link-to-login">Inicia sesión</a></p>
+        </div>
+    </div>
+    <nav>
+        <a href="#preclasificacion">Preclasificación</a>
+        <a href="#promocion">Promoción Salud</a>
+        <a href="#calendario">Calendario</a>
+        <a href="#clinicas">Clínicas Móviles</a>
+        <a href="#unidades">Unidades Cercanas</a>
+        <a href="#emergencias">Emergencias</a> <!-- 🔥 Nuevo -->
+    </nav>
+    <main>
+        <section id="preclasificacion">
+            <h2>Preclasificación de Enfermedades</h2>
+            <label>Síntomas principales (separados por coma):<br>
+                <input type="text" id="sintomas" placeholder="Ej: fiebre, tos, dolor de cabeza...">
+            </label>
+            <button id="buscarEnfermedad" type="button">Buscar</button>
+            <div id="resultadoEnfermedad"></div>
+        </section>
+                <!-- Promoción -->
+                <section id="promocion" style="display:none;">
+                    <h2>Promoción de Salud</h2>
+                    <p>Adopta hábitos saludables para mejorar tu bienestar.</p>
+                    <div class="promocion-grid">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=400" alt="Frutas frescas">
+                            <h3>Frutas y Verduras</h3>
+                            <p>Consume al menos 5 porciones al día para fortalecer tu sistema inmunológico.</p>
+                        </div>
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Plato saludable">
+                            <h3>Plato Balanceado</h3>
+                            <p>Combina carbohidratos, proteínas y vegetales en cada comida.</p>
+                        </div>
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1510626176961-4b37d0e2e4d8?w=400" alt="Agua pura">
+                            <h3>Hidratación</h3>
+                            <p>Bebe al menos 8 vasos de agua al día para mantenerte hidratado.</p>
+                        </div>
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1598965402089-897ce52e3c3a?w=400" alt="Ejercicio físico">
+                            <h3>Ejercicio</h3>
+                            <p>Realiza 30 minutos de actividad física al menos 5 veces por semana.</p>
+                        </div>
+                    </div>
+                </section>
+        <section id="calendario" style="display:none;">
+            <h2>Calendario de Jornadas y Ferias de Salud</h2>
+            <p>Próximos eventos de salud en tu comunidad.</p>
+            <div id="lista-eventos"></div>
+        </section>
+        <section id="clinicas" style="display:none;">
+            <h2>Programación de Clínicas Móviles</h2>
+            <p>Consulta las fechas y ubicaciones de las clínicas móviles.</p>
+            <div id="lista-clinicas"></div>
+        </section>
+                <section id="unidades" style="display:none;">
+                        <h2>Mapa de Unidades de Salud en Nicaragua</h2>
+                        <p>Haz clic en una unidad para trazar la ruta desde tu ubicación.</p>
+                        <div id="mapa-nicaragua" style="height: 500px; width: 100%; border: 1px solid #ccc; border-radius: 8px;"></div>
+                </section>
+
+                        <!-- Números de Emergencia -->
+                        <section id="emergencias" style="display:none;">
+                            <h2>🚨 Números de Emergencia en León</h2>
+                            <p>En caso de emergencia, comunícate con las siguientes instituciones:</p>
+                            <div class="emergencias-grid">
+                                <div class="emergencia">
+                                    <h3>🚑 Cruz Roja</h3>
+                                    <p>Atención médica de emergencias.</p>
+                                    <a href="tel:+50523112345" class="btn-emergencia">📞 Llamar 2311-2345</a>
+                                </div>
+                                <div class="emergencia">
+                                    <h3>🔥 Bomberos</h3>
+                                    <p>Atención de incendios y rescates.</p>
+                                    <a href="tel:+50523114567" class="btn-emergencia">📞 Llamar 2311-4567</a>
+                                </div>
+                                <div class="emergencia">
+                                    <h3>👮 Policía Nacional</h3>
+                                    <p>Seguridad ciudadana y denuncias.</p>
+                                    <a href="tel:118" class="btn-emergencia">📞 Llamar 118</a>
+                                </div>
+                                <div class="emergencia">
+                                    <h3>🏥 Hospital Escuela Oscar Danilo Rosales</h3>
+                                    <p>Atención hospitalaria de urgencias.</p>
+                                    <a href="tel:+50523117890" class="btn-emergencia">📞 Llamar 2311-7890</a>
+                                </div>
+                            </div>
+                        </section>
+    </main>
+    <section id="asistente-virtual" style="max-width:600px;margin:2rem auto 0 auto;">
+        <h2>Asistente Virtual</h2>
+        <div id="chatbot" style="position:static;box-shadow:none;border:1px solid #1976d2;">
+            <div id="chatbot-header">Asistente Virtual</div>
+            <div id="chatbot-messages"></div>
+            <form id="chatbot-form" autocomplete="off">
+                <div id="chatbot-input">
+                    <input type="text" id="chatbot-text" placeholder="Escribe tu consulta..." required />
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+        <script src="main.js"></script>
+        <script>
+            // Ocultar splash después de 1.5s o cuando la app esté lista
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const splash = document.getElementById('splash');
+                    if(splash) splash.style.opacity = 0;
+                    setTimeout(() => { if(splash) splash.style.display = 'none'; }, 700);
+                }, 1500);
+            });
+        </script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+        <!-- Leaflet Routing Machine -->
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+        <script type="module">
+
+        </script>
+</body>
+</html>
