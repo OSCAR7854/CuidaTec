@@ -104,7 +104,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 1.2rem;
-    background: #1565c0;
+    background: #2d5480;
     padding: 0.5rem 0;
     position: sticky;
     top: 70px;
@@ -225,3 +225,6 @@ button, .btn-emergencia, #chatbot-input button {
     border: none;
     outline: none;
 }
+
+
+

@@ -341,3 +341,4 @@ function agregarMensajeChat(remitente, texto) {
     mensajes.appendChild(div);
     mensajes.scrollTop = mensajes.scrollHeight;
 }
+

@@ -58,7 +58,7 @@
 <body>
         <div class="splash-screen" id="splash">
             <div class="splash-logo">
-                <img src="CuidaTec (1) (2).png" alt="Logo CuidaTec" style="width:100%;height:100%;object-fit:contain;">
+                <img src="CuidaTec (1) (2).png" width="250" height="250" style="object-fit:contain;">
             </div>
             <div class="splash-title">CuidaTec</div>
         </div>
@@ -150,11 +150,97 @@
             <h2>Calendario de Jornadas y Ferias de Salud</h2>
             <p>Próximos eventos de salud en tu comunidad.</p>
             <div id="lista-eventos"></div>
+            <script>
+            // Ejemplo de eventos
+            const eventos = [
+                {
+                nombre: "Jornada de Vacunación",
+                fecha: "2024-06-15",
+                lugar: "Centro de Salud Sutiaba",
+                hora: "08:00 - 12:00"
+                },
+                {
+                nombre: "Feria de Salud Comunitaria",
+                fecha: "2024-06-22",
+                lugar: "Parque Central",
+                hora: "09:00 - 14:00"
+                },
+                {
+                nombre: "Charla de Nutrición",
+                fecha: "2024-06-28",
+                lugar: "Casa Comunal Guadalupe",
+                hora: "10:00 - 11:30"
+                }
+            ];
+
+            function mostrarEventos() {
+                const contenedor = document.getElementById('lista-eventos');
+                if (!contenedor) return;
+                if (eventos.length === 0) {
+                contenedor.innerHTML = "<p>No hay eventos programados.</p>";
+                return;
+                }
+                contenedor.innerHTML = eventos.map(ev => `
+                <div class="evento" style="border:1px solid #1976d2;padding:1rem;margin-bottom:1rem;border-radius:8px;">
+                    <h3>${ev.nombre}</h3>
+                    <p><strong>Fecha:</strong> ${ev.fecha}</p>
+                    <p><strong>Lugar:</strong> ${ev.lugar}</p>
+                    <p><strong>Hora:</strong> ${ev.hora}</p>
+                </div>
+                `).join('');
+            }
+
+            // Mostrar eventos al mostrar la sección
+            document.addEventListener('DOMContentLoaded', mostrarEventos);
+            </script>
         </section>
         <section id="clinicas" style="display:none;">
             <h2>Programación de Clínicas Móviles</h2>
             <p>Consulta las fechas y ubicaciones de las clínicas móviles.</p>
             <div id="lista-clinicas"></div>
+            <script>
+            // Ejemplo de clínicas móviles
+            const clinicas = [
+            {
+                nombre: "Clínica Móvil Sutiaba",
+                fecha: "2024-06-18",
+                lugar: "Iglesia Sutiaba",
+                hora: "09:00 - 13:00"
+            },
+            {
+                nombre: "Clínica Móvil Guadalupe",
+                fecha: "2024-06-25",
+                lugar: "Parque Guadalupe",
+                hora: "08:30 - 12:30"
+            },
+            {
+                nombre: "Clínica Móvil Subtiava",
+                fecha: "2024-07-02",
+                lugar: "Casa Comunal Subtiava",
+                hora: "10:00 - 14:00"
+            }
+            ];
+
+            function mostrarClinicas() {
+            const contenedor = document.getElementById('lista-clinicas');
+            if (!contenedor) return;
+            if (clinicas.length === 0) {
+                contenedor.innerHTML = "<p>No hay clínicas móviles programadas.</p>";
+                return;
+            }
+            contenedor.innerHTML = clinicas.map(cl => `
+                <div class="clinica" style="border:1px solid #1976d2;padding:1rem;margin-bottom:1rem;border-radius:8px;">
+                <h3>${cl.nombre}</h3>
+                <p><strong>Fecha:</strong> ${cl.fecha}</p>
+                <p><strong>Lugar:</strong> ${cl.lugar}</p>
+                <p><strong>Hora:</strong> ${cl.hora}</p>
+                </div>
+            `).join('');
+            }
+
+            // Mostrar clínicas al mostrar la sección
+            document.addEventListener('DOMContentLoaded', mostrarClinicas);
+            </script>
         </section>
                 <section id="unidades" style="display:none;">
                         <h2>Mapa de Unidades de Salud en Nicaragua</h2>
@@ -224,3 +310,6 @@
         </script>
 </body>
 </html>
+
+
+
