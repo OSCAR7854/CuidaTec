@@ -1,72 +1,3 @@
-<p align="center">
-  <img src="./logo.png" alt="CuidaTec Logo" width="180"/>
-</p>
-
-<h1 align="center">🩺 CuidaTec</h1>
-<p align="center">Aplicación web tipo móvil para la salud comunitaria</p>
-
----
-
-## 📖 Descripción
-
-**CuidaTec** es una aplicación web optimizada para móviles que simula una **app de salud**.  
-Su propósito es ayudar a la comunidad brindando **orientación médica, prevención y localización de centros de salud** de forma rápida y accesible.
-
----
-
-## 🚀 Funcionalidades
-
-- 🔍 **Preclasificación de enfermedades**  
-  El usuario escribe síntomas y recibe posibles enfermedades junto con una recomendación sobre acudir o no a un médico.  
-
-- 🥗 **Promoción de salud**  
-  Consejos e imágenes sobre alimentación y hábitos saludables.  
-
-- 📅 **Calendario de jornadas y ferias de salud**  
-  Información de actividades comunitarias de salud.  
-
-- 🏥 **Clínicas móviles**  
-  Datos y ubicación de clínicas móviles disponibles.  
-
-- 🗺️ **Unidades cercanas (mapa interactivo)**  
-  Muestra hospitales y clínicas con rutas de acceso (tipo Waze).  
-
-- ☎️ **Emergencias en León**  
-  Acceso rápido a números de emergencia locales.  
-
-- 🔑 **Registro e inicio de sesión**  
-  Integrado con **Firebase Authentication**.  
-
----
-
-## 🛠️ Tecnologías
-
-- **Frontend:** HTML5, CSS3, JavaScript  
-- **Backend y autenticación:** Firebase  
-- **Base de datos:** Firebase Firestore  
-- **Mapas:** Google Maps API  
-- **Diseño:** Mobile-first con estilo moderno de app de salud  
-
----
-
-## 📱 Vista previa
-
-Pantalla de inicio estilo app móvil:
-
-<p align="center">
-  <img src="./screenshot.png" alt="Vista previa CuidaTec" width="250"/>
-</p>
-
----
-
-## 🔧 Instalación
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tuusuario/cuidatec.git
-
-
-
 # 🩺 CuidaTec  
 
 ## 📖 Descripción General  
@@ -126,4 +57,4 @@ Este proyecto busca complementar los servicios de salud existentes mediante la i
 ## 📱 Experiencia del Usuario  
 
 La interfaz de CuidaTec se ha diseñado bajo principios de accesibilidad, simplicidad y eficiencia.  
-El estilo visual toma como referencia aplicaciones profesionales del área de la salud, asegurando una experiencia moderna y confiable para el usuario final.  
+El estilo visual toma como referencia aplicaciones profesionales del área de la salud, asegurando una experiencia moderna y confiable para el usuario final.
